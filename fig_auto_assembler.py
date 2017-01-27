@@ -25,7 +25,7 @@ def cm2px(*tupl):
     else:
         return tuple(i/px for i in tupl)
     
-def add_label(figfile, fig_width, fig_height, label, loc=(15, 20), labelsize=12, outname="fig"):
+def add_label(figfile, fig_width, fig_height, label, loc=(15, 20), labelsize=12):
     savedir = os.path.dirname(figfile)
     fig = sg.SVGFigure(str(fig_width)+"cm", str(fig_height)+"cm")
     figA = sg.fromfile(figfile)
@@ -36,7 +36,7 @@ def add_label(figfile, fig_width, fig_height, label, loc=(15, 20), labelsize=12,
     fig.append([plot1])
     fig.append([txt1])
     # save generated SVG files
-    fig.save(outname)
+    fig.save(figfile)
     
 def combine_horizontally(figfile1, figfile2, figwidth1, figheight1, figwidth2, figheight2, outfile="out.svg"):
     #create new SVG figure
