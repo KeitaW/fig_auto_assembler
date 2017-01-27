@@ -41,7 +41,7 @@ def add_label(figfile, fig_width, fig_height, label, loc=(15, 20), labelsize=12,
 def combine_horizontally(figfile1, figfile2, figwidth1, figheight1, figwidth2, figheight2, outfile="out.svg"):
     #create new SVG figure
     fig = sg.SVGFigure(str(figwidth1+figwidth2)+"cm", str(max(figheight1, figheight2))+"cm")
-    savedir = os.path.dirname(figfile1)
+    figdir = os.path.dirname(figfile1)
     # load matpotlib-generated figures
     fig1 = sg.fromfile(figfile1)
     fig2 = sg.fromfile(figfile2)
@@ -59,7 +59,7 @@ def combine_horizontally(figfile1, figfile2, figwidth1, figheight1, figwidth2, f
 def combine_vertically(figfile1, figfile2, figwidth1, figheight1, figwidth2, figheight2, outfile="out.svg"):
     #create new SVG figure
     fig = sg.SVGFigure(str(max(figwidth1, figwidth2))+"cm", str(figheight1+figheight2)+"cm")
-    savedir = os.path.dirname(figfile1)
+    figdir = os.path.dirname(figfile1)
     # load matpotlib-generated figures
     fig1 = sg.fromfile(figfile1)
     fig2 = sg.fromfile(figfile2)
@@ -93,19 +93,24 @@ def combine_SVG(svgfig1, svgfig2, command, outfile):
         return(Svgfig(outfile, svgfig1.w, svgfig1.h+svgfig2.h))
     else:
         assert("Something Wrong!")
+def return_sizes():
+    return(21, 29.7)
 class Svgfig(object):
     def __init__(self, fname, w, h):
         self.fname = fname
         self.w = w
         self.h = h
+        self.a4_width_cm = 21 
+        self.a4_height_cm = 29.7
 class SVGFIG(Svgfig):
     def __init__(self, fname, fw, fh, fw_dict, fh_dict, command):
         super().__init__(fname, None, None)
         self.fig_dict = dict(); self.fname_dict = dict()
         self.command = command
         self.fw_dict = fw_dict; self.fh_dict = fh_dict
+        self.figdir = os.path.dirname(fname)
         for key in self.fw_dict.keys():
-            fname_ = os.path.join(figdir, os.path.splitext(os.path.basename(self.fname))[0]+key+".svg")
+            fname_ = os.path.join(self.figdir, os.path.splitext(os.path.basename(self.fname))[0]+key+".svg")
             self.fig_dict[key] = Svgfig(fname_, fw_dict[key], fh_dict[key])
             self.fname_dict[key] = fname_
     def generate_skeltonSVGs(self):
