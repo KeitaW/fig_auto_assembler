@@ -1,4 +1,4 @@
-#fig_auto_assembler
+# fig_auto_assembler
 
 SVG figure assembler for publication.
 
