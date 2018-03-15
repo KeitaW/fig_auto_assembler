@@ -1,6 +1,6 @@
 #fig_auto_assembler
 SVG figure assembler for publication.
-![assembled figure](./outline.svg)
+![assembled figure](./outline.pdf)
 ## Usage
 ```python
 from fig_auto_assembler import SVGFIG, return_sizes, cm2inch, add_label
