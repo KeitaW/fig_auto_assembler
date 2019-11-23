@@ -1,6 +1,6 @@
 # fig_auto_assembler
 
-SVG figure assembler for publication.
+SVG figure assembler for publication ready figures. 
 
 ![assembled figure](./outline.png)
 
