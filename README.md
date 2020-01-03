@@ -1,6 +1,6 @@
 # fig_auto_assembler
 
-SVG figure assembler for publication ready figures. 
+A library that assembles SVG figures and make a publication ready figure. 
 
 ![assembled figure](./outline.png)
 
